@@ -1,7 +1,18 @@
 language: objective-c
 osx_image: xcode12.2
- install:
-	 -bundle install
-script:
-	- fastlane analysis
-	
+
+cache:
+  bundler: true
+  directories:
+    - $HOME/.rvm/
+    - $HOME/Library/Caches/Homebrew
+
+stages:
+  - build
+
+jobs:
+  include:
+    - name: Pull Request
+      if: type = pull_request
+      stage: build
+      script: bundle exec fastlane analysis
