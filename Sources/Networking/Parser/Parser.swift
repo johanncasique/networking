@@ -6,6 +6,7 @@
 //
 
 import Foundation
+public typealias ResultCallback<T> = (Result<T, NetworkError>) -> Void
 
 public protocol ParserProtocol {
     func json<T: Decodable>(data: Data, completion: @escaping ResultCallback<T>)

@@ -17,7 +17,7 @@ public protocol Endpoint {
 }
 
 public extension Endpoint {
-    public func request(forEndpoint endpoint: String) -> URLRequest? {
+    func request(forEndpoint endpoint: String) -> URLRequest? {
         var urlComponents = URLComponents()
         urlComponents.scheme = scheme
         urlComponents.host = host
