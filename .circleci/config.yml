@@ -3,7 +3,8 @@ version: 2.1
 jobs:
   build-and-test:
     macos:
-      xcode: 11.3.0
+      xcode: 12.4.0
+    working_directory: /Users/distiller/project
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: test
@@ -17,3 +18,10 @@ jobs:
           path: output
       - store_test_results:
           path: output/scan
+
+workflows:
+  build-test:
+    jobs:
+      - build-and-test
+
+
