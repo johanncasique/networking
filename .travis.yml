@@ -1,7 +1,8 @@
 language: objective-c
 osx_image: xcode12.2
- install:
-	 -bundle install
+
+install:
+  - bundle install
 script:
-	- fastlane analysis
-	
+  - fastlane analysis
+  - fastlane test
