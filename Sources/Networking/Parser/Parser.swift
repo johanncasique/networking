@@ -16,7 +16,7 @@ public struct Parser: ParserProtocol {
     
     let jsonDecoder = JSONDecoder()
     
-    public func json<T>(data: Data, completion: @escaping ResultCallback<T>) where T : Decodable {
+    public func json<T>(data: Data, completion: @escaping ResultCallback<T>) where T: Decodable {
         do {
             let result: T = try jsonDecoder.decode(T.self, from: data)
             OperationQueue.main.addOperation { completion(.success(result)) }
