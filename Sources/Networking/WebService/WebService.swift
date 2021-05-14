@@ -14,14 +14,14 @@ public class WebService: WebServiceProtocol {
     private let networkActivity: NetworkActivityProtocol
     
     public init(urlSession: URLSession = URLSession(configuration: .default),
-         parser: Parser = Parser(),
-         networkActivity: NetworkActivityProtocol = NetworkActivity()) {
+                parser: Parser = Parser(),
+                networkActivity: NetworkActivityProtocol = NetworkActivity()) {
         self.urlSession = urlSession
         self.parser = parser
         self.networkActivity = networkActivity
     }
     
-    public func request<T>(_ endpoint: Endpoint, completion: @escaping ResultCallback<T>) where T : Decodable {
+    public func request<T>(_ endpoint: Endpoint, completion: @escaping ResultCallback<T>) where T: Decodable {
         guard let request = endpoint.request else {
             OperationQueue.main.addOperation { completion(.failure(.invalidRequest)) }
             return
@@ -29,7 +29,7 @@ public class WebService: WebServiceProtocol {
         
         networkActivity.increment()
         
-        let task = urlSession.dataTask(with: request) { [unowned self] data, response, error in
+        let task = urlSession.dataTask(with: request) { [unowned self] data, _, error in
             self.networkActivity.decrement()
             
             if let error = error {

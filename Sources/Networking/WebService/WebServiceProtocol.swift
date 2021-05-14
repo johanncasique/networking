@@ -7,7 +7,6 @@
 
 import Foundation
 
-//WebService
 protocol WebServiceProtocol {
     func request<T: Decodable>(_ endpoint: Endpoint, completion: @escaping ResultCallback<T>)
 }
