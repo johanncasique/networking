@@ -16,6 +16,8 @@ public struct Parser: ParserProtocol {
     
     let jsonDecoder = JSONDecoder()
     
+    public init() {} 
+    
     public func json<T>(data: Data, completion: @escaping ResultCallback<T>) where T: Decodable {
         do {
             let result: T = try jsonDecoder.decode(T.self, from: data)

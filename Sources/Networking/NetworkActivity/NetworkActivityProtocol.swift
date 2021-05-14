@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NetworkActivityProtocol {
+public protocol NetworkActivityProtocol {
     func increment()
     func decrement()
     func observe(using closure: @escaping (NetworkActivityState) -> Void)

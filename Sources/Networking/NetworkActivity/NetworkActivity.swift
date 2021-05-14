@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NetworkActivity: NetworkActivityProtocol {
+public class NetworkActivity: NetworkActivityProtocol {
     
     private var observation = [(NetworkActivityState) -> Void]()
     
@@ -23,6 +23,9 @@ class NetworkActivity: NetworkActivityProtocol {
             stateDidChange()
         }
     }
+    
+    public init() {}
+    
     private func stateDidChange() {
         let state = activityCount > 0 ? NetworkActivityState.show : NetworkActivityState.hide
         observation.forEach { closure in
@@ -30,15 +33,15 @@ class NetworkActivity: NetworkActivityProtocol {
         }
     }
     
-    func increment() {
+    public func increment() {
         activityCount += 1
     }
     
-    func decrement() {
+    public func decrement() {
         activityCount -= 1
     }
     
-    func observe(using closure: @escaping (NetworkActivityState) -> Void) {
+    public func observe(using closure: @escaping (NetworkActivityState) -> Void) {
         observation.append(closure)
     }
 }
