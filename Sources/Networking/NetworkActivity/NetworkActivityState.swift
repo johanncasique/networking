@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum NetworkActivityState {
+public enum NetworkActivityState {
     case show
     case hide
 }
