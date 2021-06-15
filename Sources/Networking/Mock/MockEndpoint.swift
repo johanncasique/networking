@@ -11,4 +11,3 @@ protocol MockEndpoint: Endpoint {
     var mockFilename: String? { get }
     var mockExtension: String? { get }
 }
-
