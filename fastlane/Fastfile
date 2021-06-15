@@ -1,0 +1,39 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+setup_travis
+default_platform(:ios)
+
+platform :ios do
+  desc "Lint"
+  lane :analysis do
+    swiftlint(
+      output_file: "checkstyle-result.xml",
+      reporter: "checkstyle",
+      config_file: ".swiftlint.yml",
+      strict: true      
+  )
+  end
+
+platform :ios do
+  desc "Run Test"
+  lane :test do
+    spm(
+      command: "test",
+      verbose: true,
+      xcpretty_output: "simple"
+    )
+  end
+end
+end
