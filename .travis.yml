@@ -6,3 +6,6 @@ install:
 script:
   - fastlane analysis
   - fastlane test
+  
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t {4871015c-d8eb-4491-87a2-0b0d58f5a12f}
